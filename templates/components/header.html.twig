@@ -1,20 +1,16 @@
 {% block header %}
-<div class="font-bold flex p-6 justify-between items-center">
+<div class="flex p-6 justify-between items-center">
   <div class="flex items-center gap-2 text-2xl w-1/5">
-    <img
-      width="48"
-      height="48"
-      src="https://img.icons8.com/pulsar-color/48/000000/leaf.png"
-      alt="leaf"
-    />
-    <p>Blabla Chambé</p>
+    <div class="logo w-[50px] h-[50px]"></div>
+    <a href={{ path('app_home') }} class="font-semibold">Blabla Chambé</a>
   </div>
-  <div class="flex w-3/5 justify-evenly text-3xl">
-    <p>Trajets</p>
-    <p>À propos</p>
+  <div class="flex w-3/5 justify-evenly text-2xl">
+    <a href={{ path('app_home') }}>Accueil</p>
+    <a>Trajets</a>
+    <a>À propos</a>
   </div>
   <div class="w-1/5 flex justify-end gap-6">
-    <button class="text-xl border-2 border-black px-4 rounded-lg">
+    <button class="text-lg border-2 border-black px-4 rounded-lg">
       Se connecter
     </button>
     <img
