@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %} {% block title %}Hello HomeController!{% endblock
+%} {% block body %}
+<div class="shiny px-8 py-20 flex flex-row items-center">
+  <h1 class="text-5xl text-white font-bold w-1/2 p-8 mx-6">
+    Des déplacements éco avec le convoiturage Blabla Chambéry!
+  </h1>
+  <div
+    class="example bg-white w-1/2 p-6 text-2xl font-semibold flex flex-col gap-8 rounded-lg"
+  >
+    <div class="destination flex flex-row justify-around">
+      <div class="flex flex-row items-center gap-2">
+        <img
+          class="w-10"
+          width="64"
+          height="64"
+          src="https://img.icons8.com/arcade/64/pin.png"
+          alt="pin"
+        />
+        <p>La Ravoire</p>
+      </div>
+      <div class="flex flex-row items-center gap-2">
+        <img
+          class="w-10"
+          width="48"
+          height="48"
+          src="https://img.icons8.com/color/48/filled-flag.png"
+          alt="filled-flag"
+        />
+        <p>Bassens</p>
+      </div>
+    </div>
+    <div class="centre flex flex-row justify-around items-center font-semibold">
+      <div class="infos flex flex-col gap-4 font-medium">
+        <p>Mardi 15 août 2023</p>
+        <div class="flex flex-row items-center gap-2">
+          <img
+            class="w-10"
+            width="48"
+            height="48"
+            src="https://img.icons8.com/color-glass/48/money.png"
+            alt="money"
+          />
+          <p>10€</p>
+        </div>
+        <p>3 places restantes</p>
+      </div>
+      <div
+        class="conducteur flex flex-col justify-center items-center gap-2 font-normal text-lg"
+      >
+        <img
+          class="rounded-full"
+          width="100"
+          src="{{ asset('./images/julienfaketete.jpeg') }}"
+          alt="ia
+        face"
+        />
+        <div class="flex gap-4 text-xl font-bold items-center">
+          <p>Julien</p>
+          <div class="flex items-center gap-2">
+            <p>4,6</p>
+            <img
+              class="w-7"
+              width="48"
+              height="48"
+              src="https://img.icons8.com/fluency/48/star.png"
+              alt="star"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="regles font-normal">
+      <p>Règles: Fumeur, pas d’animaux, bavard bienvenus...</p>
+    </div>
+  </div>
+</div>
+<div class="flex justify-center gap-24 my-20 text-2xl font-bold">
+  <button
+    class="px-12 py-6 border-2 border-black text-white bg-[#3EADF3] rounded-full"
+  >
+    Voir les trajets
+  </button>
+  <button class="px-12 py-6 border-2 border-black bg-gray-100 rounded-full">
+    Créer un compte
+  </button>
+</div>
+{% endblock %}
