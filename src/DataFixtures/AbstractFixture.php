@@ -13,5 +13,6 @@ abstract class AbstractFixture extends Fixture
   public function __construct()
   {
     $this->faker = Factory::create('fr_FR');
+
   }
 }
