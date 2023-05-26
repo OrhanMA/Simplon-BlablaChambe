@@ -6,13 +6,13 @@
   </div>
   <div class="flex w-3/5 justify-evenly text-2xl font-semibold">
     <a href={{ path('app_home') }}>Accueil</p>
-    <a>Trajets</a>
-    <a>À propos</a>
+    <a href={{ path('app_trajets') }}>Trajets</a>
+    <a href={{ path('app_about') }}>À propos</a>
   </div>
   <div class="w-1/5 flex justify-end gap-6">
-    <button class="text-lg border-2 border-black px-4 rounded-lg">
+    <a href={{ path('app_profile') }} class=" flex items-center text-lg border-2 border-black px-4 rounded-lg">
       Se connecter
-    </button>
+    </a>
     <img
       width="50"
       height="50"
