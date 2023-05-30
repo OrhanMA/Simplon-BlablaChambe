@@ -40,11 +40,12 @@ body %} {# {{ dump(rides[0]) }} {{ dump(users[0].firstName) }} #}
         <div class="flex justify-center gap-4 text-2xl"></div>
         <div class="flex items-center justify-around gap-6">
           <p class="text-xl font-semibold">{{ ride.seats }} places restantes</p>
-          <button
+          <a
+            href="/trajets/detail/{{ ride.id }}"
             class="bg-gray-400 text-white border-2 border-gray-500 py-2 px-6 rounded-full text-sm"
           >
             Détails
-          </button>
+          </a>
         </div>
       </div>
     </div>

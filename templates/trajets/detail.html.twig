@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %} {% block title %}Trajets{% endblock %} {% block
+body %} {# {{ dump(users[ride.id]) }}
+{{ dump(ride) }}
+{{ dump(ride.rules) }} #}
+<div class="pt-32 pb-20 border-b-2 border-b-gray-200">
+  <div class="flex flex-col items-center">
+    <div
+      class="bg-white w-full flex rounded-xl justify-evenly gap-12 items-center px-6 py-4"
+    >
+      <div class="flex flex-col text-center justify-center items-center gap-4">
+        <img
+          class="rounded-full border-4 border-gray-200"
+          width="150"
+          src="{{ asset('./images/julienfaketete.jpeg') }}"
+          alt="ia
+          face"
+        />
+        <div>
+          <p class="text-2xl font-bold">
+            {{ ride.driver.firstName }} {{ ride.driver.lastName }}
+          </p>
+          <p class="text-sm">(Tel: + 33 {{ users[ride.driver.id].phone }})</p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-6 justify-center items-center">
+        <div
+          class="w-full flex text-2xl items-center justify-between font-bold mb-5"
+        >
+          <div>
+            <p class="underline">Le {{ ride.date|date("d/m/Y") }}</p>
+            <p class="font-normal text-sm">
+              (Offre créée le {{ users[ride.driver.id].created|date("d/m/Y") }})
+            </p>
+          </div>
+          <p class="text-5xl text-sky-500">{{ ride.price }}€</p>
+        </div>
+        <div class="flex justify-center items-center gap-4 mb-2">
+          <p class="text-xl">
+            Départ:
+            <span class="font-bold text-3xl">{{ ride.departure }}</span>
+          </p>
+
+          <p class="text-xl">
+            Arrivée:
+            <span class="font-bold text-3xl">{{ ride.destination }}</span>
+          </p>
+        </div>
+        <div class="flex justify-center gap-4 text-2xl"></div>
+        <div class="justify-center gap-6 text-sm flex flex-wrap">
+          <ul>
+            {% for rule in rules %}
+            <li
+              class="m-2 w-1/2 hover:flex hover:flex-nowrap hover:w-full line-clamp-1 hover:line-clamp-none hover:text-sky-300"
+            >
+              {{ rule }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="flex justify-center gap-12 p-6">
+          <button
+            class="bg-sky-400 text-white border-2 border-gray-300 py-2 px-6 rounded-full text-2xl"
+          >
+            Réserver
+          </button>
+          <div
+            class="flex items-center justify-around gap-6 text-2xl font-semibold"
+          >
+            <p>{{ ride.seats }} places restantes !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -28,6 +28,12 @@ class Rule
     #[ORM\ManyToMany(targetEntity: Ride::class, mappedBy: 'rules')]
     private Collection $rides;
 
+    public function __toString()
+    {
+        // Or change the property that you want to show in the select.
+        return $this->name . ': ' . $this->description;
+    }
+
     public function __construct()
     {
         $this->rides = new ArrayCollection();
