@@ -5,10 +5,12 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -19,9 +21,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 255, nullable: true)]
     // private array $role = [];
-    private ?string $role;
+    private ?string $role = null;
     /**
      * @var string The hashed password
      */
@@ -34,8 +36,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $last_name = null;
 
-    #[ORM\Column]
-    private ?int $phone = null;
+    #[ORM\Column(length: 30)]
+    private ?string $phone = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $created = null;
@@ -70,19 +72,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): string
+    public function getRoles(): array
     {
         // $role = $this->role;
         // guarantee every user at least has ROLE_USER
         // $role[] = 'ROLE_USER';
+        $role = explode(',', $this->role);
 
+        if (empty($role)) {
+            $role[] = 'ROLE_USER';
+        }
         // return array_unique($role);
-        return $this->role;
+        return array_unique($role);
     }
 
-    public function setRoles(string $role): self
+    public function setRoles(array $role): self
     {
-        $this->role = $role;
+        $this->role = implode(',', $role);
 
         return $this;
     }
@@ -135,12 +141,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
 
@@ -157,5 +163,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->created = $created;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedValue(): void
+    {
+        $this->created = new \DateTime();
     }
 }

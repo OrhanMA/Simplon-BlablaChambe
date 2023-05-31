@@ -1,42 +1,81 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Log in!{% endblock %}
-
-{% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
+{% extends 'base.html.twig' %} {% block title %}Log in!{% endblock %} {% block
+body %}
+<div
+  class="flex flex-nowrap flex-row-reverse w-full gap-12 justify-center mb-20 pt-32 h-[90vh]"
+>
+  <div class="pr-12 flex items-center w-1/2 bg-no-repeat bg-contain">
+    <img src="{{ asset('./images/road-trip.jpg') }}" alt="" />
+  </div>
+  <div class="pl-12 w-1/2 flex flex-col items-start justify-center">
+    <h1 class="text-2xl mb-10 leading-[3rem]">
+      <span class="text-5xl font-bold">Bonjour,</span> <br />
+      Veuillez vous connecter:
+    </h1>
+    <form
+      method="post"
+      class="flex flex-col gap-y-4 justify-center items-center"
     >
+      {% if error %}
+      <div class="alert alert-danger">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+      </div>
+      {% endif %} {% if app.user %}
+      <div class="mb-3">
+        You are logged in as {{ app.user.userIdentifier }},
+        <a href="{{ path('app_logout') }}">Logout</a>
+      </div>
+      {% endif %}
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+      <div class="flex my-12 gap-12">
+        <div class="flex items-center gap-6">
+          <label for="inputEmail" class="text-xl">Email</label>
+          <input
+            type="email"
+            value="{{ last_username }}"
+            name="email"
+            id="inputEmail"
+            class="form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
+            autocomplete="email"
+            required
+            autofocus
+          />
         </div>
-    #}
+        <div class="flex gap-6">
+          <label for="inputPassword" class="text-xl">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="inputPassword"
+            class="form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+      </div>
+      <input
+        type="hidden"
+        name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}"
+      />
 
-    <button class="btn btn-lg btn-primary" type="submit">
+      {# Uncomment this section and add a remember_me option below your firewall
+      to activate remember me functionality. See
+      https://symfony.com/doc/current/security/remember_me.html
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" name="_remember_me" /> Remember me
+        </label>
+      </div>
+      #}
+
+      <button
+        class="btn btn-lg btn-primary text-xl bg-black py-4 px-6 text-white rounded-2xl mt-10"
+        type="submit"
+      >
         Sign in
-    </button>
-</form>
+      </button>
+    </form>
+  </div>
+</div>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Bienvenue chez Blabla Chambé{%
 endblock %} {% block body %}
-<div class="shiny px-8 py-20 flex flex-row items-center">
+<div class="shiny px-8 pb-20 pt-32 flex flex-row items-center">
   <h1 class="text-5xl text-white font-bold w-1/2 p-8 mx-6">
     Vos déplacements éco avec le covoiturage Blabla Chambé!
   </h1>
@@ -92,9 +92,9 @@ endblock %} {% block body %}
   </div>
 </div>
 <div class="flex justify-center gap-24 my-20 text-xl font-bold">
-  <button class="px-8 py-4 text-white bg-[#3EADF3] rounded-full">
+  <a href={{ path('app_trajets') }} class="px-8 py-4 text-white bg-[#3EADF3] rounded-full">
     Voir les trajets
-  </button>
-  <button class="px-8 py-4 bg-gray-200 rounded-full">Créer un compte</button>
+  </a>
+  <a href={{ path('app_register') }} class="px-8 py-4 bg-gray-200 rounded-full">Créer un compte</a>
 </div>
 {% endblock %}
