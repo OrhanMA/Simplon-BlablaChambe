@@ -2,10 +2,10 @@
 body %}
 <div class="flex flex-nowrap w-full">
   <div class="pl-6 flex items-center w-1/2 bg-no-repeat bg-contain">
-    <img src="{{ asset('./images/road-trip.jpg') }}" alt="" />
+    <img src="{{ asset('./images/road-trip.webp') }}" alt="" />
   </div>
   <div class="w-1/2 pt-32 mb-20 flex flex-col items-center">
-    <h1 class="text-2xl mb-10 leading-[3rem]">
+    <h1 class="text-lg mb-10 leading-[3rem]">
       <span class="text-5xl font-bold">Bienvenue,</span> <br />
       Veuillez remplir le formulaire pour vous inscrire:
     </h1>
@@ -18,15 +18,15 @@ body %}
       })
     }}
     #} {#
-    <div class="font-semibold border-b-2">
+    <div class="font-medium border-b-2">
       {{ form_row(registrationForm.first_name) }}
     </div>
     #}
     <div class="flex gap-12">
-      <div class="text-2xl font-semibold border-b-2 flex flex-col mb-4 pb-4">
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
         <label
           for="{{ registrationForm.first_name.vars.id }}"
-          class="font-semibold"
+          class="font-medium"
           >Prénom</label
         >
         {{
@@ -38,10 +38,10 @@ body %}
           })
         }}
       </div>
-      <div class="text-2xl font-semibold border-b-2 flex flex-col mb-4 pb-4">
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
         <label
           for="{{ registrationForm.last_name.vars.id }}"
-          class="font-semibold"
+          class="font-medium"
           >Nom</label
         >
         {{
@@ -55,8 +55,8 @@ body %}
       </div>
     </div>
     <div class="flex gap-12">
-      <div class="text-2xl font-semibold border-b-2 flex flex-col mb-4 pb-4">
-        <label for="{{ registrationForm.email.vars.id }}" class="font-semibold"
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ registrationForm.email.vars.id }}" class="font-medium"
           >Email</label
         >
         {{
@@ -68,8 +68,8 @@ body %}
           })
         }}
       </div>
-      <div class="text-2xl font-semibold border-b-2 flex flex-col mb-4 pb-4">
-        <label for="{{ registrationForm.phone.vars.id }}" class="font-semibold"
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ registrationForm.phone.vars.id }}" class="font-medium"
           >Téléphone</label
         >
         {{
@@ -83,10 +83,10 @@ body %}
       </div>
     </div>
     <div class="flex justify-center text-center">
-      <div class="text-2xl font-semibold border-b-2 flex flex-col mb-4 pb-4">
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
         <label
           for="{{ registrationForm.plainPassword.vars.id }}"
-          class="font-semibold"
+          class="font-medium"
           >Mot de passe</label
         >
         {{
@@ -101,11 +101,11 @@ body %}
     </div>
     <div class="flex justify-center">
       <div
-        class="text-xl font-semibold flex flex-row justify-center items-center gap-6 p-4"
+        class="text-xl font-medium flex flex-row justify-center items-center gap-6 p-4"
       >
         <label
           for="{{ registrationForm.agreeTerms.vars.id }}"
-          class="font-normal"
+          class="text-sm font-normal"
           >J'accepte les conditions générales d'utilisation</label
         >
         {{
@@ -120,7 +120,7 @@ body %}
     <div class="flex justify-center">
       <button
         type="submit"
-        class="btn text-2xl text-white bg-black py-2 px-6 rounded-full m-8 border-black border-2"
+        class="btn text-lg text-white bg-black py-2 px-6 rounded-full m-8 border-black border-2"
       >
         Créer mon compte
       </button>

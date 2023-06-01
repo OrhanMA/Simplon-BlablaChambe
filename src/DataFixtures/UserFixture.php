@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Provider\PhoneNumber;
+// use Faker\Provider\PhoneNumber;
 use DateTime;
 
 

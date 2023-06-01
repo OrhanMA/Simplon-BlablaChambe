@@ -1,41 +1,78 @@
 {% extends 'base.html.twig' %} {% block title %}Profil{% endblock %} {% block
 body %}
-<style>
-  .example-wrapper {
-    margin: 1em auto;
-    max-width: 800px;
-    width: 95%;
-    font: 18px/1.5 sans-serif;
-  }
-  .example-wrapper code {
-    background: #f5f5f5;
-    padding: 2px 6px;
-  }
-</style>
-
-<div class="example-wrapper">
-  <h1>Hello {{ controller_name }}! ✅</h1>
-
-  This friendly message is coming from:
-  <ul>
-    <li>
-      Your controller at
-      <code
-        ><a
-          href="{{ '/Users/orhanmadiassani/Desktop/Simplon/Briefs/blablacar/src/Controller/ProfileController.php'|file_link(0) }}"
-          >src/Controller/ProfileController.php</a
-        ></code
+<div class="h-[90vh] pt-32 p-6 gap-6 flex flex-col">
+  <h1 class="font-bold text-4xl">Mon profil</h1>
+  <div class="flex flex-row flex-wrap">
+    <div class="w-2/5">
+      <h2
+        class="text-3xl mb-5 font-bold underline underline-offset-[5px] decoration-stone-700"
       >
-    </li>
-    <li>
-      Your template at
-      <code
-        ><a
-          href="{{ '/Users/orhanmadiassani/Desktop/Simplon/Briefs/blablacar/templates/profile/index.html.twig'|file_link(0) }}"
-          >templates/profile/index.html.twig</a
-        ></code
+        Mes infos
+      </h2>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Prénom
+        </p>
+        <p class="text-xl">Fake prénom</p>
+      </div>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Nom
+        </p>
+        <p class="text-xl">Fake nom</p>
+      </div>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Téléphone
+        </p>
+        <p class="text-xl">Fake téléphone</p>
+      </div>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Email
+        </p>
+        <p class="text-xl">Fake email</p>
+      </div>
+    </div>
+    <div class="w-2/5">
+      <h2
+        class="text-3xl mb-5 font-bold underline underline-offset-[5px] decoration-stone-700"
       >
-    </li>
-  </ul>
+        Ma voiture
+      </h2>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Marque de voiture
+        </p>
+        <p class="text-xl">Fake voiture</p>
+      </div>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Modèle de voiture
+        </p>
+        <p class="text-xl">Fake modèle</p>
+      </div>
+      <div class="flex flex-col gap-4 mb-4">
+        <p
+          class="text-2xl w-1/2 font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Nombre de places
+        </p>
+        <p class="text-xl">Fake seats</p>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

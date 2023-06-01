@@ -2,10 +2,12 @@
 body %} {# {{ dump(users[ride.id]) }}
 {{ dump(ride) }}
 {{ dump(ride.rules) }} #}
-<div class="pt-32 pb-20 border-b-2 border-b-gray-200">
-  <div class="flex flex-col items-center">
+<div
+  class="shiny flex justify-center items-center h-[100vh] border-b-2 border-b-gray-200"
+>
+  <div class="flex p-4 flex-col items-center">
     <div
-      class="bg-white w-full flex rounded-xl justify-evenly gap-12 items-center px-6 py-4"
+      class="card text-stone-50 w-full flex rounded-xl justify-evenly gap-12 items-center px-6 py-4"
     >
       <div class="flex flex-col text-center justify-center items-center gap-4">
         <img
@@ -32,7 +34,7 @@ body %} {# {{ dump(users[ride.id]) }}
               (Offre créée le {{ users[ride.driver.id].created|date("d/m/Y") }})
             </p>
           </div>
-          <p class="text-5xl text-sky-500">{{ ride.price }}€</p>
+          <p class="text-5xl text-green-500">{{ ride.price }}€</p>
         </div>
         <div class="flex justify-center items-center gap-4 mb-2">
           <p class="text-xl">
@@ -50,7 +52,7 @@ body %} {# {{ dump(users[ride.id]) }}
           <ul>
             {% for rule in rules %}
             <li
-              class="m-2 w-1/2 hover:flex hover:flex-nowrap hover:w-full line-clamp-1 hover:line-clamp-none hover:text-sky-300"
+              class="m-2 w-1/2 hover:flex hover:flex-nowrap hover:w-full line-clamp-1 hover:line-clamp-none hover:text-green-300"
             >
               {{ rule }}
             </li>
@@ -59,7 +61,7 @@ body %} {# {{ dump(users[ride.id]) }}
         </div>
         <div class="flex justify-center gap-12 p-6">
           <button
-            class="bg-sky-400 text-white border-2 border-gray-300 py-2 px-6 rounded-full text-2xl"
+            class="bg-green-500 text-white border-2 border-gray-300 py-2 px-6 rounded-full text-2xl"
           >
             Réserver
           </button>

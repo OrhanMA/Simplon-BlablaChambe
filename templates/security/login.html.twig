@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %} {% block title %}Log in!{% endblock %} {% block
 body %}
 <div
-  class="flex flex-nowrap flex-row-reverse w-full gap-12 justify-center mb-20 pt-32 h-[90vh]"
+  class="flex flex-nowrap flex-row-reverse w-full justify-around mb-20 pt-32 h-[90vh]"
 >
-  <div class="pr-12 flex items-center w-1/2 bg-no-repeat bg-contain">
-    <img src="{{ asset('./images/road-trip.jpg') }}" alt="" />
+  <div class="flex items-center bg-no-repeat bg-contain">
+    <img
+      src="{{ asset('./images/road-trip.webp') }}"
+      alt="a car doing a road trip in a canyon"
+    />
   </div>
-  <div class="pl-12 w-1/2 flex flex-col items-start justify-center">
-    <h1 class="text-2xl mb-10 leading-[3rem]">
+  <div class="flex flex-col items-start justify-center">
+    <h1 class="text-2xl leading-[3rem]">
       <span class="text-5xl font-bold">Bonjour,</span> <br />
       Veuillez vous connecter:
     </h1>
@@ -26,27 +29,27 @@ body %}
       </div>
       {% endif %}
 
-      <div class="flex my-12 gap-12">
-        <div class="flex items-center gap-6">
+      <div class="flex flex-col my-12 gap-6">
+        <div class="flex flex-col gap-6">
           <label for="inputEmail" class="text-xl">Email</label>
           <input
             type="email"
             value="{{ last_username }}"
             name="email"
             id="inputEmail"
-            class="form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
+            class="h-10 form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
             autocomplete="email"
             required
             autofocus
           />
         </div>
-        <div class="flex gap-6">
+        <div class="flex flex-col gap-6">
           <label for="inputPassword" class="text-xl">Mot de passe</label>
           <input
             type="password"
             name="password"
             id="inputPassword"
-            class="form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
+            class="h-10 form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
             autocomplete="current-password"
             required
           />
@@ -70,7 +73,7 @@ body %}
       #}
 
       <button
-        class="btn btn-lg btn-primary text-xl bg-black py-4 px-6 text-white rounded-2xl mt-10"
+        class="btn btn-lg btn-primary text-xl bg-black py-4 px-6 text-white rounded-2xl"
         type="submit"
       >
         Sign in

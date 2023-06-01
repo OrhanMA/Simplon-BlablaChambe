@@ -3,10 +3,19 @@
 @tailwind utilities;
 
 .shiny {
-  background-image: url(../../public/images/shiny.svg);
+  background-image: url(../../public/images/shiny2.svg);
+  background-attachment: fixed;
 }
 .logo {
   background-image: url(../../public/images/leaf.png);
   background-position: center;
   background-size: contain;
+}
+
+.card {
+  backdrop-filter: blur(2px) saturate(186%);
+  -webkit-backdrop-filter: blur(2px) saturate(156%);
+  background-color: rgba(255, 255, 255, 0.065);
+  border-radius: 12px;
+  border: 1px solid rgba(117, 115, 115, 0.223);
 }
