@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %} {% block title %}Ajouter un trajet{% endblock %}
+{% block body %}
+{{ dump(user) }}
+<div class="pt-32 p-6 gap-6 flex flex-col items-center font-bold">
+  <h1 class="text-4xl">Bonjour, {{ user.firstName }} {{ user.lastName }}</h1>
+  <h2 class="text-3xl">
+    Veuillez remplir le formulaire pour ajouter un trajet à votre profil:
+  </h2>
+  {{ form_start(form) }}
+  <div class="flex flex-col items-center">
+    <div class="flex flex-col gap-12">
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.departure.vars.id }}" class="font-medium"
+          >Depart</label
+        >
+        {{
+          form_widget(form.departure, {
+            attr: {
+              class:
+                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+            }
+          })
+        }}
+      </div>
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.destination.vars.id }}" class="font-medium"
+          >Arrivee</label
+        >
+        {{
+          form_widget(form.destination, {
+            attr: {
+              class:
+                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+            }
+          })
+        }}
+      </div>
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.seats.vars.id }}" class="font-medium"
+          >Places dispo</label
+        >
+        {{
+          form_widget(form.seats, {
+            attr: {
+              class:
+                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+            }
+          })
+        }}
+      </div>
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.date.vars.id }}" class="font-medium">Date</label>
+        {{
+          form_widget(form.date, {
+            attr: {
+              class:
+                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+            }
+          })
+        }}
+      </div>
+      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.price.vars.id }}" class="font-medium">Prix</label>
+        {{
+          form_widget(form.price, {
+            attr: {
+              class:
+                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+            }
+          })
+        }}
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn text-lg text-white bg-black py-2 px-6 rounded-full m-8 border-black border-2"
+    >
+      Ajouter le trajet
+    </button>
+  </div>
+  {# {{ form_widget(form) }} #}
+  {{ form_end(form) }}
+</div>
+{% endblock %}

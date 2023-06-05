@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Entity\Car;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\CarType;
+use App\Form\RideType;
 use DateTime;
 
 class ProfileController extends AbstractController
@@ -161,7 +162,84 @@ class ProfileController extends AbstractController
 
 
 
+    #[Route('/profile/add_ride', name: 'app_add_ride')]
+    public function insertRide(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->security->getUser(); // Retrieve the authenticated user
+
+        $ride = new Ride();
+        $ride->setDriver($user); // Set the driver of the ride entity
+        $ride->setCreated(new \DateTime());
+
+        $form = $this->createForm(RideType::class, $ride);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // The form was submitted and the data is valid
+
+            // Persist the ride entity
+            $entityManager->persist($ride);
+            $entityManager->flush();
+
+            // Redirect the user to a success page or any other desired action
+            return $this->redirectToRoute('app_profile');
+        }
+
+        // Render the form template
+        return $this->render('profile/add_ride.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+    }
+
+    #[Route('/profile/edit_ride/{id}', name: 'app_edit_ride')]
+    public function editRide(Request $request, EntityManagerInterface $entityManager, ride $ride): Response
+    {
+        // Retrieve the authenticated user
+        $user = $this->security->getUser();
+
+        // Create the form for editing the ride properties
+        $form = $this->createFormBuilder($ride)
+            ->add('departure')
+            ->add('destination')
+            ->add('seats')
+            ->add('price')
+            ->add('date')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // The form was submitted and the data is valid
+
+            // Persist the updated ride entity
+            $entityManager->persist($ride);
+            $entityManager->flush();
+
+            // Redirect the user to a success page or any other desired action
+            return $this->redirectToRoute('app_profile');
+        }
+
+        // Render the form template
+        return $this->render('profile/edit_ride.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+            'ride' => $ride,
+            'id' => $ride->getId(), // Pass the ride's ID as a parameter
+        ]);
+    }
 
 
+
+    #[Route('/profile/delete_ride/{id}', name: 'app_delete_ride')]
+    public function deleteRide(EntityManagerInterface $entityManager, Ride $ride): Response
+    {
+        // Remove the car entity
+        $entityManager->remove($ride);
+        $entityManager->flush();
+
+        // Redirect the user to a success page or any other desired action
+        return $this->redirectToRoute('app_profile');
+    }
 
 }
