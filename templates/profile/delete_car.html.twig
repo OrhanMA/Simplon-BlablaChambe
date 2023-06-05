@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %} {% block title %}Supprimer une voiture{% endblock
+%} {% block body %}
+<h1>Supprimer la voiture</h1>
+
+<p>Voulez-vous vraiment supprimer la voiture ?</p>
+
+<form action="{{ path('app_delete_car', { id: car.id }) }}" method="POST">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit">Confirmer</button>
+</form>
+{% endblock %}
