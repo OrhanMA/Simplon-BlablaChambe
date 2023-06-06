@@ -1,36 +1,29 @@
 {% block header %}
-<div class="z-40 flex p-4 justify-between items-center fixed bg-white w-full border-gray-200 border-b-2">
-  <div class="flex items-center gap-2 text-2xl w-1/5">
-    <div class="logo w-[50px] h-[50px]"></div>
-    <a href={{ path('app_home') }} class="font-semibold hover:duration-150 hover:text-stone-400">Blabla Chambé</a>
+<div class="z-40 p-2 flex justify-center gap-6 sm:justify-between items-center fixed bg-white w-full">
+  <div class="flex items-center gap-6">
+    <div class="logo w-12 h-12"></div>
+    <a href={{ path('app_home') }} class="invisible w-0 sm:visible">Blabla Chambé</a>
   </div>
-  <div class="flex w-2/5 justify-evenly text-2xl font-semibold">
-    <a href={{ path('app_home') }} class="hover:duration-200 hover:border-b-4 hover:border-stone-400 hover:text-stone-500">Accueil</p>
-    <a href={{ path('app_trajets') }} class="hover:duration-200 hover:border-b-4 hover:border-stone-400 hover:text-stone-500">Trajets</a>
+  <div class="flex  gap-6 md:gap-12 lg:gap-24">
+    <a href={{ path('app_home') }} class="hover:border-b-2 hover:duration-100 border-b-sky-400">Accueil</p>
+    <a href={{ path('app_trajets') }} class="hover:border-b-2 hover:duration-100 border-b-sky-400">Trajets</a>
   </div>
-  <div class="flex w-2/5 justify-end gap-6">
+  <div class="flex  items-center text-sm lg:text-md gap-4 ">
     {% if not app.user %}
-    <a href={{ path('app_login') }} class="hover:duration-200 hover:bg-white hover:text-stone-400 hover:border-2 hover:border-stone-400 flex flex-nowrap h-10 items-center text-lg border-2 border-black px-2 rounded-lg">
+    <a href={{ path('app_login') }} class="hover:border-2 hover:px-2 hover:py-1 hover:rounded-lg hover:duration-100 hover:text-sky-400 hover:border-sky-400">
       Se connecter
     </a>
-    <a href={{ path('app_register') }} class=" hover:duration-200 hover:bg-stone-400 hover:text-white  flex items-center text-white bg-black text-lg px-4 rounded-lg">
+    <a href={{ path('app_register') }} class="hover:border-black hover:border-2 hover:px-2 hover:py-1 hover:rounded-lg hover:duration-100">
       Créer un compte
     </a>
     {% else %}
-    <a href={{ path('app_logout') }} class=" hover:duration-200 hover:bg-white hover:text-stone-400 hover:border-2 hover:border-stone-400  flex items-center text-lg border-2 border-black px-4 rounded-lg">
+    <a href={{ path('app_logout') }} class="hover:border-2 hover:px-2 hover:py-1 hover:rounded-lg hover:duration-100 hover:text-sky-400  hover:border-sky-400">
       Se déconnecter
     </a>
-    <a href={{ path('app_profile') }} class=" hover:duration-200 hover:bg-stone-400 hover:text-white  flex items-center text-white bg-black text-lg px-4 rounded-lg">
+    <a href={{ path('app_profile') }} class="hover:border-black hover:border-2 hover:px-2 hover:py-1 hover:rounded-lg hover:duration-100">
       Mon profil
     </a>
     {% endif %}
-    
-    {# <img
-      width="50"
-      height="50"
-      src="https://img.icons8.com/ios-filled/50/gender-neutral-user.png"
-      alt="gender-neutral-user"
-    /> #}
   </div>
 </div>
 {% endblock header %}

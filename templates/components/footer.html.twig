@@ -1,41 +1,42 @@
 {% block footer %}
-<div class="bg-neutral-800 text-stone-50 py-12 flex flex-col items-center">
+<div class="bg-sky-500 text-stone-50 py-12 flex flex-col items-center">
 
 
-<div class="flex items-center gap-2 text-2xl w-1/5">
-  <div class="logo w-[60px] h-[60px]"></div>
-  <a href={{ path('app_home') }} class="font-semibold">Blabla Chambé</a>
+<div class="flex items-center gap-2">
+  <div class="logo w-[30px] h-[30px]"></div>
+  <a href={{ path('app_home') }} class="font-semibold text-lg lg:text-2xl">Blabla Chambé</a>
 </div>
 
-<div class="flex flex-row flex-nowrap gap-12 p-6 mt-8">
-      <div class="flex flex-col">
-        <h4 class="font-semibold text-lg border-b-2  border-sky-300  pb-2 mb-8">À propos de nous</h4>
-        <p class="max-w-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies risus ut tellus pulvinar, in consequat metus ultrices.</p>
+<div class="flex flex-row flex-nowrap items-center gap-12 p-6 mt-8">
+      <div class="flex flex-col w-2/5">
+        <h4 class="font-semibold text-md lg:text-lg  border-b-2  border-sky-300  pb-2 mb-8">À propos de nous</h4>
+        <p class="max-w-md text-sm lg:text-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies risus ut tellus pulvinar, in consequat metus ultrices.</p>
       </div>
-      <div>
-        <h4 class="font-semibold text-lg border-b-2 border-sky-300  pb-2 mb-8">Liens utiles</h4>
-        <ul>
-          <li><a href={{ path('app_home') }}>Accueil</a></li>
-          <li><a href="#">Trajets</a></li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold text-lg border-b-2  border-sky-300 pb-2 mb-8">Réseaux sociaux</h4>
-        <ul>
-          <li>Facebook</a></li>
-          <li>Twitter</a></li>
-          <li>Instagram</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold text-lg border-b-2 border-sky-300  pb-2 mb-8">Contact</h4>
-        <ul>
-          <li>Adresse</li>
-          <li>Téléphone</li>
-          <li>Email</li>
-        </ul>
+      <div class="flex w-3/5 justify-evenly">
+        <div>
+          <h4 class="font-semibold text-md lg:text-lg  border-b-2 border-sky-300  pb-2 mb-8">Liens</h4>
+          <ul class="text-sm lg:text-md">
+            <li><a href={{ path('app_home') }}>Accueil</a></li>
+            <li><a href={{ path('app_trajets') }}>Trajets</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-md lg:text-lg  border-b-2  border-sky-300 pb-2 mb-8">Réseaux</h4>
+          <ul class="text-sm lg:text-md">
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-md lg:text-lg  border-b-2 border-sky-300  pb-2 mb-8">Contact</h4>
+          <ul class="text-sm lg:text-md">
+            <li>Adresse</li>
+            <li>Téléphone</li>
+            <li>Email</li>
+          </ul>
+        </div>
       </div>
 </div>
 

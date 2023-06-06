@@ -1,84 +1,73 @@
 {% extends 'base.html.twig' %} {% block title %}Log in!{% endblock %} {% block
 body %}
 <div
-  class="flex flex-nowrap flex-row-reverse w-full justify-around mb-20 pt-32 h-[90vh]"
+  class="flex flex-col items-center justify-center w-full mb-20 pt-32 h-[90vh]"
 >
-  <div class="flex items-center bg-no-repeat bg-contain">
-    <img
-      src="{{ asset('./images/road-trip.webp') }}"
-      alt="a car doing a road trip in a canyon"
+  <h1 class="text:lg md:text-xl leading-[3rem]">
+    <span class="text-2xl md:text-5xl font-bold">Bonjour,</span> <br />
+    Veuillez vous connecter:
+  </h1>
+  <form method="post" class="flex flex-col gap-y-4 justify-center items-center">
+    {% if error %}
+    <div class="alert alert-danger">
+      {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+    {% endif %} {% if app.user %}
+    <div class="mb-3">
+      You are logged in as {{ app.user.userIdentifier }},
+      <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+    {% endif %}
+
+    <div class="flex flex-col my-12 gap-6">
+      <div class="flex flex-col gap-6">
+        <label for="inputEmail" class="text-md md:text-xl">Email</label>
+        <input
+          type="email"
+          value="{{ last_username }}"
+          name="email"
+          id="inputEmail"
+          class="h-10 form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
+          autocomplete="email"
+          required
+          autofocus
+        />
+      </div>
+      <div class="flex flex-col gap-6">
+        <label for="inputPassword" class="text-md md:text-xl"
+          >Mot de passe</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="inputPassword"
+          class="h-10 form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
+          autocomplete="current-password"
+          required
+        />
+      </div>
+    </div>
+    <input
+      type="hidden"
+      name="_csrf_token"
+      value="{{ csrf_token('authenticate') }}"
     />
-  </div>
-  <div class="flex flex-col items-start justify-center">
-    <h1 class="text-2xl leading-[3rem]">
-      <span class="text-5xl font-bold">Bonjour,</span> <br />
-      Veuillez vous connecter:
-    </h1>
-    <form
-      method="post"
-      class="flex flex-col gap-y-4 justify-center items-center"
+
+    {# Uncomment this section and add a remember_me option below your firewall
+    to activate remember me functionality. See
+    https://symfony.com/doc/current/security/remember_me.html
+
+    <div class="checkbox mb-3">
+      <label> <input type="checkbox" name="_remember_me" /> Remember me </label>
+    </div>
+    #}
+
+    <button
+      class="btn btn-lg btn-primary text-xl bg-black py-2 px-4 text-white rounded-2xl"
+      type="submit"
     >
-      {% if error %}
-      <div class="alert alert-danger">
-        {{ error.messageKey|trans(error.messageData, 'security') }}
-      </div>
-      {% endif %} {% if app.user %}
-      <div class="mb-3">
-        You are logged in as {{ app.user.userIdentifier }},
-        <a href="{{ path('app_logout') }}">Logout</a>
-      </div>
-      {% endif %}
-
-      <div class="flex flex-col my-12 gap-6">
-        <div class="flex flex-col gap-6">
-          <label for="inputEmail" class="text-xl">Email</label>
-          <input
-            type="email"
-            value="{{ last_username }}"
-            name="email"
-            id="inputEmail"
-            class="h-10 form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
-            autocomplete="email"
-            required
-            autofocus
-          />
-        </div>
-        <div class="flex flex-col gap-6">
-          <label for="inputPassword" class="text-xl">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            id="inputPassword"
-            class="h-10 form-control border-2 border-black flex flex-col rounded-md focus:outline-sky-300 focus:bg-white"
-            autocomplete="current-password"
-            required
-          />
-        </div>
-      </div>
-      <input
-        type="hidden"
-        name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}"
-      />
-
-      {# Uncomment this section and add a remember_me option below your firewall
-      to activate remember me functionality. See
-      https://symfony.com/doc/current/security/remember_me.html
-
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" name="_remember_me" /> Remember me
-        </label>
-      </div>
-      #}
-
-      <button
-        class="btn btn-lg btn-primary text-xl bg-black py-4 px-6 text-white rounded-2xl"
-        type="submit"
-      >
-        Sign in
-      </button>
-    </form>
-  </div>
+      Sign in
+    </button>
+  </form>
 </div>
 {% endblock %}

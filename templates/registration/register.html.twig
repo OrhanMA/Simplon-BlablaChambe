@@ -1,11 +1,8 @@
 {% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block
 body %}
-<div class="flex flex-nowrap w-full">
-  <div class="pl-6 flex items-center w-1/2 bg-no-repeat bg-contain">
-    <img src="{{ asset('./images/road-trip.webp') }}" alt="" />
-  </div>
+<div class="flex justify-center flex-nowrap w-full">
   <div class="w-1/2 pt-32 mb-20 flex flex-col items-center">
-    <h1 class="text-lg mb-10 leading-[3rem]">
+    <h1 class="text-lg mb-10 leading-[3rem] text-center">
       <span class="text-5xl font-bold">Bienvenue,</span> <br />
       Veuillez remplir le formulaire pour vous inscrire:
     </h1>
@@ -22,7 +19,9 @@ body %}
       {{ form_row(registrationForm.first_name) }}
     </div>
     #}
-    <div class="flex gap-12">
+    <div
+      class="flex flex-col justify-center items-center sm:flex-row sm:gap-12 text-center"
+    >
       <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
         <label
           for="{{ registrationForm.first_name.vars.id }}"
@@ -54,7 +53,9 @@ body %}
         }}
       </div>
     </div>
-    <div class="flex gap-12">
+    <div
+      class="flex flex-col justify-center items-center sm:flex-row sm:gap-12 text-center"
+    >
       <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
         <label for="{{ registrationForm.email.vars.id }}" class="font-medium"
           >Email</label

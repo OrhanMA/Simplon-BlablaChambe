@@ -1,60 +1,36 @@
 {% extends 'base.html.twig' %} {% block title %}Bienvenue chez Blabla Chambé{%
 endblock %} {% block body %}
-<div class="shiny h-[100vh] px-8 pb-20 pt-32 flex w-full sm:gap-12 lg:flex-row md:flex-col items-center">
-  <h1 class="text-5xl text-white font-bold lg:w-1/2 md:w-3/5 p-8 mx-6">
+<div class="shiny  px-8 pb-20 pt-32 flex flex-col w-full sm:gap-12 lg:flex-row items-center">
+  <h1 class="text-4xl text-center sm:text-5xl lg:text-start text-white font-bold lg:w-1/2 md:w-3/5 p-8 mx-6">
     Vos déplacements éco avec le covoiturage Blabla Chambé!
   </h1>
   <div
     class="card text-stone-50 hover:duration-300 hover:scale-110  example bg-white lg:w-1/2 md:w-3/5 p-6 text-2xl flex flex-col gap-8 rounded-lg"
   >
     <div
-      class="destination font-bold flex flex-row justify-around border-b-2 border-neutral-900 pb-2"
+      class="destination font-bold flex flex-row justify-around border-b-2 border-b-sky-300 border-neutral-900 pb-2"
     >
       <div class="flex flex-row items-center gap-2">
-        {#
-        <img
-          class="w-10"
-          width="64"
-          height="64"
-          src="https://img.icons8.com/arcade/64/pin.png"
-          alt="pin"
-        />
-        #}
         <p>La Ravoire</p>
       </div>
-      <img
+      {# <img
         width="30"
         height="30"
         src="https://img.icons8.com/ios/50/long-arrow-right--v1.png"
         alt="long-arrow-right--v1"
-      />
+      /> #}
+      <p>vers</p>
       <div class="flex flex-row items-center gap-2">
-        {#
-        <img
-          class="w-10"
-          width="48"
-          height="48"
-          src="https://img.icons8.com/color/48/filled-flag.png"
-          alt="filled-flag"
-        />
-        #}
         <p>Bassens</p>
       </div>
     </div>
     <div
-      class="centre flex flex-row justify-around items-center border-b-2 border-neutral-900  pb-6"
+      class="centre flex flex-row justify-around items-center border-b-2 border-b-sky-300 border-neutral-900  pb-6"
     >
       <div class="infos flex flex-col gap-4">
         <p class="font-medium">Mardi 15 août 2023</p>
         <div class="flex flex-row items-center gap-2">
           <p>10€</p>
-          {# <img
-            class="w-10"
-            width="48"
-            height="48"
-            src="https://img.icons8.com/color-glass/48/money.png"
-            alt="money"
-          /> #}
         </div>
         <p class="font-medium">3 places restantes</p>
       </div>
@@ -91,14 +67,14 @@ endblock %} {% block body %}
     </div>
   </div>
 </div>
-<div class="flex bg-stone-50 items-center justify-center h-full gap-24 py-20 text-xl font-bold">
-  <a href={{ path('app_trajets') }} class="flex items-center h-20 px-8 py-4 text-white bg-neutral-800 rounded-full">
+<div class="flex items-center justify-center h-full gap-24 py-20 text-md font-bold">
+  <a href={{ path('app_trajets') }} class="flex items-center h-20 px-6 py-2 sm:px-8 text-white bg-sky-500 rounded-full">
     Voir les trajets
   </a>
   {% if not app.user %}
-  <a href={{ path('app_register') }} class="flex items-center h-20 px-8 py-4 bg-stone-300 rounded-full">Créer un compte</a>
+  <a href={{ path('app_register') }} class="flex items-center h-20 px-6 py-2 sm:px-8 bg-stone-300 rounded-full">Créer un compte</a>
   {% else %}
-  <a href={{ path('app_profile') }} class="flex items-center h-20 px-8 py-4 bg-gray-200 rounded-full">Mon profile</a>
+  <a href={{ path('app_profile') }} class="flex items-center h-20 px-6 py-2 sm:px-8 bg-gray-200 rounded-full">Mon profile</a>
   {% endif %}
 </div>
 {% endblock %}

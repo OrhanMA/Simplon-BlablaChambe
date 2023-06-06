@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %} {% block title %}Ajouter un trajet{% endblock %}
-{% block body %}
-{{ dump(user) }}
+{% block body %} {# {{ dump(user) }} #}
 <div class="pt-32 p-6 gap-6 flex flex-col items-center font-bold">
-  <h1 class="text-4xl">Bonjour, {{ user.firstName }} {{ user.lastName }}</h1>
-  <h2 class="text-3xl">
+  <h1 class="text-2xl">Bonjour, {{ user.firstName }} {{ user.lastName }}</h1>
+  <h2 class="text-xl">
     Veuillez remplir le formulaire pour ajouter un trajet à votre profil:
   </h2>
   {{ form_start(form) }}
