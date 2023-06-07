@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %} {% block title %}Supprimer une règle{% endblock
+%} {% block body %}
+<h1>Supprimer la règle</h1>
+
+<p>Voulez-vous vraiment supprimer la règle ?</p>
+
+<form action="{{ path('app_delete_rule', { id: rule.id }) }}" method="POST">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit">Confirmer</button>
+</form>
+{% endblock %}

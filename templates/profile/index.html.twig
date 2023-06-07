@@ -142,6 +142,41 @@ body %}
       </div>
       {% endfor %}
     </div>
+    <div class="w-full">
+      <div class="flex items-center gap-6 mb-10">
+        <h2
+          class="text-md sm:text-xl font-bold underline underline-offset-[5px] decoration-stone-700 "
+        >
+          Mes règles
+        </h2>
+        <a
+          href={{ path('app_add_rule') }}
+          class="cursor-pointer border-2 border-stone-400 text-sm text-stone-600 px-2 py-1 rounded-lg"
+          >
+          Ajouter
+          </a>
+      </div>
+      {% for rule in rules %}
+      <div class="flex flex-col gap-4 p-4 mb-4">
+        <p
+          class="text-md sm:text-lg font-semibold underline decoration-stone-400 underline-offset-[5px]"
+        >
+          Rule ID#{{ rule.id }}
+        </p>
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-6 text-md sm:text-lg">
+            <p>{{ rule.name }}:</p>
+            <p>{{ rule.description }}</p>
+          </div>
+          <div class="flex gap-6">
+            <a class="w-10 h-10 flex items-center justify-center border-2 rounded-full p-2" href={{ path('app_edit_rule', {'id': rule.id}) }}><img class="w-full" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1"/></a>
+            <a class="w-10 h-10 flex items-center justify-center border-2 rounded-full p-2" href={{ path('app_delete_rule', {'id': rule.id}) }}><img class="w-full" src="https://img.icons8.com/ios-glyphs/30/delete-forever.png" alt="delete-forever"/></a>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}

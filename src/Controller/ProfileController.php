@@ -10,9 +10,11 @@ use Symfony\Bundle\SecurityBundle\Security;
 use App\Entity\Ride;
 use App\Entity\User;
 use App\Entity\Car;
+use App\Entity\Rule;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\CarType;
 use App\Form\RideType;
+use App\Form\RuleType;
 use DateTime;
 
 class ProfileController extends AbstractController
@@ -33,9 +35,11 @@ class ProfileController extends AbstractController
         $userId = $user->getId();
 
         $rideRepository = $entityManager->getRepository(Ride::class);
+        $ruleRepository = $entityManager->getRepository(Rule::class);
         $userRepository = $entityManager->getRepository(User::class);
         $carRepository = $entityManager->getRepository(Car::class);
         $rides = $rideRepository->findBy(['driver' => $userId]);
+        $rules = $ruleRepository->findBy(['author' => $userId]);
         // Comment out the following line that reassigns $user
         // $user = $userRepository->find($userId);
         $cars = $carRepository->findBy(['owner' => $userId]);
@@ -46,6 +50,7 @@ class ProfileController extends AbstractController
             'user' => $user,
             // Use the original $user object instead
             'cars' => $cars,
+            'rules' => $rules,
         ]);
     }
 
@@ -236,6 +241,82 @@ class ProfileController extends AbstractController
     {
         // Remove the car entity
         $entityManager->remove($ride);
+        $entityManager->flush();
+
+        // Redirect the user to a success page or any other desired action
+        return $this->redirectToRoute('app_profile');
+    }
+
+    #[Route('/profile/add_rule', name: 'app_add_rule')]
+    public function insertRule(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->security->getUser(); // Retrieve the authenticated user
+
+        $rule = new Rule();
+        $rule->setAuthor($user);
+
+
+        $form = $this->createForm(RuleType::class, $rule);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // The form was submitted and the data is valid
+
+            // Persist the rule entity
+            $entityManager->persist($rule);
+            $entityManager->flush();
+
+            // Redirect the user to a success page or any other desired action
+            return $this->redirectToRoute('app_profile');
+        }
+
+        // Render the form template
+        return $this->render('profile/add_rule.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+            'rules' => $rule,
+        ]);
+    }
+
+    #[Route('/profile/edit_rule/{id}', name: 'app_edit_rule')]
+    public function editRule(Request $request, EntityManagerInterface $entityManager, Rule $rule): Response
+    {
+        // Retrieve the authenticated user
+        $user = $this->security->getUser();
+
+        // Create the form for editing the rule properties
+        $form = $this->createFormBuilder($rule)
+            ->add('name')
+            ->add('description')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // The form was submitted and the data is valid
+
+            // Persist the updated rule entity
+            $entityManager->persist($rule);
+            $entityManager->flush();
+
+            // Redirect the user to a success page or any other desired action
+            return $this->redirectToRoute('app_profile');
+        }
+
+        // Render the form template
+        return $this->render('profile/edit_rule.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+            'rule' => $rule,
+            'id' => $rule->getId(), // Pass the rule's ID as a parameter
+        ]);
+    }
+
+    #[Route('/profile/delete_rule/{id}', name: 'app_delete_rule')]
+    public function deleteRule(EntityManagerInterface $entityManager, Rule $rule): Response
+    {
+        // Remove the rule entity
+        $entityManager->remove($rule);
         $entityManager->flush();
 
         // Redirect the user to a success page or any other desired action
