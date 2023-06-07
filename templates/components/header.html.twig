@@ -1,8 +1,8 @@
 {% block header %}
-<div class="z-40 p-2 flex justify-center gap-6 sm:justify-between items-center fixed bg-white w-full">
+<div class="z-40 p-2 flex justify-center gap-6 sm:justify-between items-center fixed bg-white w-full drop-shadow-xl text-md">
   <div class="flex items-center gap-6">
     <div class="logo w-12 h-12"></div>
-    <a href={{ path('app_home') }} class="invisible w-0 sm:visible">Blabla Chambé</a>
+    <a href={{ path('app_home') }} class="invisible sm:visible">Blabla Chambé</a>
   </div>
   <div class="flex  gap-6 md:gap-12 lg:gap-24">
     <a href={{ path('app_home') }} class="hover:border-b-2 hover:duration-100 border-b-sky-400">Accueil</p>
@@ -17,11 +17,11 @@
       Créer un compte
     </a>
     {% else %}
-    <a href={{ path('app_logout') }} class="hover:border-2 hover:px-2 hover:py-1 hover:rounded-lg hover:duration-100 hover:text-sky-400  hover:border-sky-400">
-      Se déconnecter
+    <a href={{ path('app_logout') }}>
+      <img width="30" height="30" src="https://img.icons8.com/fluency/48/shutdown.png" alt="shutdown"/>
     </a>
-    <a href={{ path('app_profile') }} class="hover:border-black hover:border-2 hover:px-2 hover:py-1 hover:rounded-lg hover:duration-100">
-      Mon profil
+    <a href={{ path('app_profile') }}>
+      <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/guest-male.png" alt="guest-male"/>
     </a>
     {% endif %}
   </div>

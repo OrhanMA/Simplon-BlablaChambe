@@ -4,13 +4,13 @@ body %} {# {{ dump(rides[0]) }} {{ dump(users[0].firstName) }} #}
   {% for ride in rides %}
   <div class="flex flex-col items-center">
     <div
-      class="card text-white w-10/12 sm:w-4/5 lg:w-3/5 p-6 flex flex-col sm:flex-row sm:gap-12 sm:justify-center"
+      class="card text-white my-4 w-10/12 sm:w-4/5 lg:w-3/5 p-6 flex flex-col sm:flex-row sm:gap-12 sm:justify-center"
     >
       <div
         class="flex flex-col sm:w-1/3 md:w-1/5 justify-center items-center gap-4"
       >
         <img
-          class="rounded-full border-2 border-neutral-600 w-[70px]"
+          class="rounded-full border-2 border-white w-[70px]"
           src="{{ asset('./images/julienfaketete.jpeg') }}"
           alt="ia face"
         />
@@ -54,5 +54,14 @@ body %} {# {{ dump(rides[0]) }} {{ dump(users[0].firstName) }} #}
   </div>
   {% endfor %}
 </div>
-
+<div class="flex items-center justify-center h-full gap-24 py-20 text-md font-bold">
+  <a href={{ path('app_home') }} class="flex items-center h-20 px-6 py-2 sm:px-8 text-white bg-sky-500 rounded-full">
+    Page d'accueil
+  </a>
+  {% if not app.user %}
+  <a href={{ path('app_register') }} class="flex items-center h-20 px-6 py-2 sm:px-8 bg-stone-300 rounded-full">Créer un compte</a>
+  {% else %}
+  <a href={{ path('app_profile') }} class="flex items-center h-20 px-6 py-2 sm:px-8 bg-gray-200 rounded-full">Mon profil</a>
+  {% endif %}
+</div>
 {% endblock %}

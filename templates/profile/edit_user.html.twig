@@ -1,57 +1,59 @@
 {% extends 'base.html.twig' %} {% block title %}Modifier les informations
 utilisateur{% endblock %} {% block body %}
-<div class="pt-32 p-6 gap-6 flex flex-col items-center font-bold">
-  <h1 class="text-2xl">Bonjour, {{ user.firstName }} {{ user.lastName }}</h1>
+<div class="pt-32 p-6 gap-6 flex flex-col items-center">
+  <a class="flex flex-start bg-sky-400 px-2 py-1 rounded-xl text-white" href={{path('app_profile')}}>Revenir à la page profil.</a>
+
+  <h1 class="text-2xl">Bonjour, <span class="font-bold"> {{ user.firstName }} {{ user.lastName }}</span></h1>
   <h2 class="text-xl">
     Veuillez remplir le formulaire pour modifier vos informations:
   </h2>
   {{ form_start(form) }}
   <div class="flex flex-col items-center">
     <div class="flex flex-col gap-12">
-      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
-        <label for="{{ form.firstName.vars.id }}" class="font-medium"
+      <div class="text-lg  border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.firstName.vars.id }}" class=""
           >Prénom</label
         >
         {{
           form_widget(form.firstName, {
             attr: {
               class:
-                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+                "p-1 flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
             }
           })
         }}
       </div>
-      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
-        <label for="{{ form.lastName.vars.id }}" class="font-medium">Nom</label>
+      <div class="text-lg  border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.lastName.vars.id }}" class="">Nom</label>
         {{
           form_widget(form.lastName, {
             attr: {
               class:
-                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+                "p-1 flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
             }
           })
         }}
       </div>
-      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
-        <label for="{{ form.email.vars.id }}" class="font-medium">Email</label>
+      <div class="text-lg  border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.email.vars.id }}" class="">Email</label>
         {{
           form_widget(form.email, {
             attr: {
               class:
-                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+                "p-1 flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
             }
           })
         }}
       </div>
-      <div class="text-lg font-medium border-b-2 flex flex-col mb-4 pb-4">
-        <label for="{{ form.phone.vars.id }}" class="font-medium"
+      <div class="text-lg  border-b-2 flex flex-col mb-4 pb-4">
+        <label for="{{ form.phone.vars.id }}" class=""
           >Téléphone</label
         >
         {{
           form_widget(form.phone, {
             attr: {
               class:
-                "flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
+                "p-1 flex flex-col mt-2 rounded-md border-2 border-black focus:outline-sky-300 focus:bg-white"
             }
           })
         }}
