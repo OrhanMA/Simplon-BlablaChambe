@@ -2,11 +2,11 @@
 <div class="z-40 p-2 flex justify-center gap-6 sm:justify-between items-center fixed bg-white w-full drop-shadow-xl text-xl font-medium">
   <div class="flex items-center gap-6">
     <div class="logo w-12 h-12"></div>
-    <a href={{ path('app_home') }} class="invisible sm:visible">Blabla Chambé</a>
+    <a href={{ path('app_home') }} class="hover:text-sky-400 hover:duration-150 transition ease-in-out invisible sm:visible">Blabla Chambé</a>
   </div>
   <div class="flex  gap-6 md:gap-12 lg:gap-24">
-    <a href={{ path('app_home') }} class="hover:border-b-2 hover:duration-100 border-b-sky-400">Accueil</p>
-    <a href={{ path('app_trajets') }} class="hover:border-b-2 hover:duration-100 border-b-sky-400">Trajets</a>
+    <a href={{ path('app_home') }} class="transition ease-in-out hover:text-sky-400 hover:border-b-2 hover:duration-100 border-b-sky-400">Accueil</p>
+    <a href={{ path('app_trajets') }} class="transition ease-in-out hover:text-sky-400 hover:border-b-2 hover:duration-100 border-b-sky-400">Trajets</a>
   </div>
   <div class="flex  items-center text-sm lg:text-md gap-4 ">
     {% if not app.user %}
