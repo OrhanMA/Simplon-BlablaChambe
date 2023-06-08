@@ -39,7 +39,16 @@ class RideRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
+    public function priceOrder($order): array
+    {
+        return $this->createQueryBuilder('ride')
+            ->orderBy('ride.price', $order)
+            // ->setParameter('order', $order)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    /**
 //     * @return Ride[] Returns an array of Ride objects
 //     */
 //    public function findByExampleField($value): array
@@ -54,7 +63,7 @@ class RideRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Ride
+    //    public function findOneBySomeField($value): ?Ride
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')

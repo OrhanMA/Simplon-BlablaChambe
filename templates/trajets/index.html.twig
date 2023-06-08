@@ -1,6 +1,19 @@
 {% extends 'base.html.twig' %} {% block title %}Trajets{% endblock %} {% block
 body %} {# {{ dump(rides[0]) }} {{ dump(users[0].firstName) }} #}
+{% include "/components/filtrage_trajets.html.twig" %}
 <div class="shiny pt-32 pb-20 text-stone-50">
+  {# <div class="w-full flex justify-evenly items-center py-4 bg-white text-black">
+    <p>Filter par:</p>
+    <a class="flex items-center gap-4" href={{ path('app_trajets', {'order': 'ASC'}) }}>
+      <p>Prix croissant</p>
+      <img width="20" height="20" src="https://img.icons8.com/ios/30/000000/generic-sorting-2.png" alt="generic-sorting-2"/>
+    </a>
+    <a class="flex items-center gap-4" href={{ path('app_trajets', {'order': 'DESC'}) }}>
+      <p>Prix décroissant</p>
+      <img width="20" height="20" src="https://img.icons8.com/ios/50/generic-sorting.png" alt="generic-sorting"/>
+    </a>
+    <a href={{ path('app_trajets') }}>Supprimer les filtres</a>
+  </div> #}
   {% for ride in rides %}
   <div class="flex flex-col items-center">
     <div

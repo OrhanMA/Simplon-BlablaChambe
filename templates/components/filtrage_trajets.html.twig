@@ -1,0 +1,17 @@
+{% block filtrage %}
+<div class="pt-20 w-full flex justify-evenly items-center py-4 bg-white text-black shadow-xl">
+  <div class="flex gap-6 items-center ">
+    <p>Filtrer:</p>
+    <a class="flex items-center gap-4" href={{ path('app_trajets', {'order': 'ASC'}) }}>
+     
+      <img width="20" height="20" src="https://img.icons8.com/ios/30/000000/generic-sorting-2.png" alt="generic-sorting-2"/>
+    </a>
+    <a class="flex items-center gap-4" href={{ path('app_trajets', {'order': 'DESC'}) }}>
+      
+      <img width="20" height="20" src="https://img.icons8.com/ios/50/generic-sorting.png" alt="generic-sorting"/>
+    </a>
+  </div>
+  
+  <a href={{ path('app_trajets') }}>Supprimer les filtres</a>
+</div>
+{% endblock filtrage %}
